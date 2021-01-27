@@ -1,0 +1,14 @@
+<odoo>
+    <template id="datarobot_portal" inherit_id="portal.portal_my_home">
+        <xpath expr="//div[hasclass('o_portal_my_home')]" position="replace">
+            <div class="o_portal_my_home">
+                <div class="oe_structure" id="oe_structure_portal_my_home_1"/>
+                <h3>You can now start using app. Just press Submit Google Link at the header.</h3>
+                <h4>App details could be found here <a href="https://github.com/yankinmax/datarobot-test">Google Sheet data type analyser</a></h4>
+                <div class="o_portal_docs list-group">
+                </div>
+            </div>
+        </xpath>
+    </template>
+</odoo>
+

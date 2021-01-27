@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="datarobot_form" name="Datarobot form">
+            <t t-call="website.layout">
+            	<div id="wrap">
+            		<div class="oe_structure">
+	                	<div class="container">
+	                    	<div class="col-md-12">
+	                        	<form role="form" action="/datarobot/form/submit" method="POST">
+	                        		<br/>
+	                        		<input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+		                            <div class="form-group">
+		                                <label for="spreadsheet_url" class="control-label">Google Spreadsheet Link:</label>
+		                                <input type="url" class="form-control" name="spreadsheet_url" t-att-value="spreadsheet_url" id="spreadsheet_url" required="true" placeholder="e.g. https://docs.google.com/spreadsheets"/>
+		                            </div>
+		                            <button type="submit" class="btn btn-primary">Check column types</button>
+		                        </form>
+	                    	</div>
+	                	</div>
+	                </div>
+              	</div>
+          	</t>
+        </template>
+        <record id="user_form_success" model="website.page">
+            <field name="name">Success!</field>
+            <field name="type">qweb</field>
+            <field name="url">/datarobot-success</field>
+            <field name="website_published">True</field>
+            <field name="key">datarobot.user_form_success</field>
+            <field name="arch" type="xml">
+            	<t name="Success" t-name="datarobot.user_form_success">
+			        <t t-call="website.layout">
+			            <div id="wrap">
+			                <div class="container">
+			                    <div class="col-lg-8">
+			                    	<br/>
+			                        <div class="alert alert-success" role="status">
+			                            Data types recognized successfully.
+			                        </div>
+			                        <p t-if="sheet_types">
+			                        	Guessed Data types:
+				                        <t t-esc="sheet_types"/>
+				                    </p>
+			                   </div>
+			                </div>
+			            </div>
+			        </t>
+			    </t>
+            </field>
+        </record>
+        <record id="user_form_warning" model="website.page">
+            <field name="name">Warning!</field>
+            <field name="type">qweb</field>
+            <field name="url">/datarobot-warning</field>
+            <field name="website_published">True</field>
+            <field name="key">datarobot.user_form_warning</field>
+            <field name="arch" type="xml">
+            	<t name="Error" t-name="datarobot.user_form_warning">
+			        <t t-call="website.layout">
+			            <div id="wrap">
+			                <div class="container">
+			                    <div class="col-lg-8">
+			                    	<br/>
+			                        <div class="alert alert-warning" role="alert">
+			                            <strong>It's not a Google Spreadsheet Link!</strong> <br/>Should contain docs.google.com/spreadsheets
+			                        </div>
+			                   </div>
+			                </div>
+			            </div>
+			        </t>
+			    </t>
+            </field>
+        </record>
+    </data>
+</odoo>
