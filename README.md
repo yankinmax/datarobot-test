@@ -22,6 +22,7 @@ If not follow instructions: https://www.digitalocean.com/community/tutorials/doc
 4. In root folder of repository run commands:
 
 sudo docker build --no-cache -t datarobot/odoo:latest .
+
 sudo docker-compose up
 
 5. You start your Odoo instance.
